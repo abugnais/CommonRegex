@@ -26,7 +26,7 @@ class RegexUtil:
 		return m
 
 	def findEmails(text):
-		m = re.search('[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?',text)
+		m = re.search('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?',text)
 		return m
 
 	def findNumbers(text):
@@ -38,9 +38,9 @@ class RegexUtil:
 
 	def passwordVlidator(text,minLength = 5,char = true,digit = true,symbol = false,upperCase = false):
 		regex = '(?={' + minLength + ',})';
-		regex += char ? '(?=.+[a-zA-Z])' : ''
-		regex += digit ? '(?=\d)' : ''
-		regex += symbol ? '(?=\W+)' : ''
+		regex += '(?=.+[a-zA-Z])' if char else ''
+		regex += '(?=\d)' if digit else ''
+		regex += '(?=\W+)' if symbol else ''
 		m = re.search(regex)
 		return m
 
