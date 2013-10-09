@@ -2,35 +2,35 @@ import re
 class RegexUtil:
 	@staticmethod
 	def findWords(text,minLength=1):
-		m = re.search('\w{' + minLength + ',}',text)
+		m = re.findall('\w{' + minLength + ',}',text)
 		return m
 
 	def findLinks(text):
-		m = re.search('\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))',text)
+		m = re.findall('\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))',text)
 		return m
 
 	def matchArabic(text):
-		m = re.search('([\x{0621}-\x{0670}]+)',text)
+		m = re.findall('([\x{0621}-\x{0670}]+)',text)
 		return m
 
 	def findControlChars(text):
-		m = re.search('(?![\x{000d}\x{000a}\x{0009}])\p{C}')
+		m = re.findall('(?![\x{000d}\x{000a}\x{0009}])\p{C}')
 		return m
 
 	def twitterNames(text):
-		m = re.search('@\w{1,15}')
+		m = re.findall('@\w{1,15}')
 		return m
 
 	def hashtags(text):
-		m = re.search('#\w+')
+		m = re.findall('#\w+')
 		return m
 
 	def findEmails(text):
-		m = re.search('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?',text)
+		m = re.findall('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?',text)
 		return m
 
 	def findNumbers(text):
-		m = re.search('\d+',text)
+		m = re.findall('\d+',text)
 		return m
 
 	def removeExtraSpaces(text):
@@ -41,7 +41,7 @@ class RegexUtil:
 		regex += '(?=.+[a-zA-Z])' if char else ''
 		regex += '(?=\d)' if digit else ''
 		regex += '(?=\W+)' if symbol else ''
-		m = re.search(regex)
+		m = re.findall(regex)
 		return m
 
 
