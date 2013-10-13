@@ -36,7 +36,7 @@ class RegexUtil:
 	def removeExtraSpaces(text):
 		return re.sub('\s+',' ',text)
 
-	def passwordVlidator(text,minLength = 5,char = true,digit = true,symbol = false,upperCase = false):
+	def passwordVlidator(text,minLength = 5,char = True,digit = True,symbol = False,upperCase = False):
 		regex = '(?={' + minLength + ',})';
 		regex += '(?=.+[a-zA-Z])' if char else ''
 		regex += '(?=\d)' if digit else ''
