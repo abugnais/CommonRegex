@@ -10,11 +10,11 @@ class RegexUtil:
 		return m
 
 	def matchArabic(text):
-		m = re.findall('([\x{0621}-\x{0670}]+)',text)
+		m = re.findall('([\u0621-\u0670]+)',text)
 		return m
 
 	def findControlChars(text):
-		m = re.findall('(?![\x{000d}\x{000a}\x{0009}])\p{C}')
+		m = re.findall('(?![\u000d\u000a\u0009])\p{C}')
 		return m
 
 	def twitterNames(text):
