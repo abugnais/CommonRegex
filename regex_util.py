@@ -8,22 +8,21 @@ class RegexUtil:
     '''
     returns an array of all the english words in a given text
     @param  string  text           the text that contains the words
-    @param  integer minLength      optional,the minimum length of the words to find
+    @param  int minLength      optional,the minimum length of the words to find
     @return array
     '''
     @staticmethod
-    def findWords(text,minLength=1):
-        m = re.findall('\w{' + minLength + ',}',text)
-        return m
+    def find_words(text,minLength=1):
+        return re.findall('\w{' + minLength + ',}',text)
 
     '''
     returns an array of valid urls found in the given text
     @param  string text    the text that contains the links
     @return array
     '''
-    def findLinks(text):
-        m = re.findall('\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))',text)
-        return m
+    @staticmethod
+    def find_links(text):
+        return re.findall('\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))',text)
 
     '''
     matches arabic text and returns and array of all arabic words if the flag returnMatches is set to true
@@ -31,9 +30,9 @@ class RegexUtil:
     @param  bool    returnMatches optional,if set to true returns an array of the found words
     @return bool|array
     '''
-    def matchArabic(text):
-        m = re.findall('([\u0621-\u0670]+)',text)
-        return m
+    @staticmethod
+    def match_arabic(text):
+        return re.findall('([\u0621-\u0670]+)',text)
 
     '''
     matches all the non printable control characters in a given text
@@ -41,54 +40,55 @@ class RegexUtil:
     @param  bool   remove if set to true removes all the control characters from the string text
     @return bool|string
     '''
-    def findControlChars(text):
-        m = re.findall('(?![\u000d\u000a\u0009])\p{C}')
-        return m
+    @staticmethod
+    def find_control_characters(text):
+        return re.findall('(?![\u000d\u000a\u0009])\p{C}')
 
     '''
     matches all the valid twitter screen names in a given text
     @param  string text
     @return array
     '''
-    def twitterNames(text):
-        m = re.findall('@\w{1,15}')
-        return m
+    @staticmethod
+    def twitter_names(text):
+        return re.findall('@\w{1,15}')
 
     '''
     matches all the valid twitter hashtags in a given text
     @param  string $text
     @return array
     '''
+    @staticmethod
     def hashtags(text):
-        m = re.findall('#\w+')
-        return m
+        return re.findall('#\w+')
 
     '''
     matches all the valid emails in a given text
     @param  string text
     @return array
     '''
-    def findEmails(text):
-        m = re.findall('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?',text)
-        return m
+    @staticmethod
+    def find_emails(text):
+        return re.findall('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?',text)
 
     '''
-    matches all the integers in a given text
+    matches all the ints in a given text
     @param string text
-    @param integer minLength the minimum number of digits in the numbers to find
-    @param integer maxLength the maximum number of digits in the numbers to find
+    @param int minLength the minimum number of digits in the numbers to find
+    @param int maxLength the maximum number of digits in the numbers to find
     @return array
     '''
-    def findNumbers(text):
-        m = re.findall('\d+',text)
-        return m
+    @staticmethod
+    def find_numbers(text):
+        return re.findall('\d+',text)
 
     '''
     Removes extra spaces from the given text
     @param string text
     @return string
     '''
-    def removeExtraSpaces(text):
+    @staticmethod
+    def remove_extra_spaces(text):
         return re.sub('\s+',' ',text)
 
     '''
@@ -100,7 +100,8 @@ class RegexUtil:
     @param bool symbol password condition:need to have at least one symbol default = false
     @param bool upperCase password condition:need to have at least one upper case character default = false
     '''
-    def passwordVlidator(text,minLength = 5,char = True,digit = True,symbol = False,upperCase = False):
+    @staticmethod
+    def password_vlidator(text,minLength = 5,char = True,digit = True,symbol = False,upperCase = False):
         regex = '(?={' + minLength + ',})';
         regex += '(?=.+[a-zA-Z])' if char else ''
         regex += '(?=\d)' if digit else ''
