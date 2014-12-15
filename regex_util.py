@@ -13,7 +13,7 @@ class RegexUtil:
     '''
     @staticmethod
     def find_words(text,minLength=1):
-        return re.findall('\w{' + minLength + ',}',text)
+        return re.findall('\w{' + str(minLength) + ',}',text)
 
     '''
     returns an array of valid urls found in the given text
@@ -101,12 +101,12 @@ class RegexUtil:
     @param bool upperCase password condition:need to have at least one upper case character default = false
     '''
     @staticmethod
-    def password_vlidator(text,minLength = 5,char = True,digit = True,symbol = False,upperCase = False):
-        regex = '(?={' + minLength + ',})';
+    def password_validator(text, min_length = 5, char = True, digit = True, symbol = False, upper_case = False):
+        regex = '(?=.{' + str(min_length) + ',})';
         regex += '(?=.+[a-zA-Z])' if char else ''
         regex += '(?=\d)' if digit else ''
         regex += '(?=\W+)' if symbol else ''
-        m = re.findall(regex)
-        return m
+        print(re.compile(regex).match(text))
+        return re.compile(regex).match(text)
 
 
