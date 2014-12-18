@@ -4,7 +4,7 @@ import re
 python regualr expressions utility library
 to use this library your strings need to be encoded in utf-8
 '''
-class RegexUtil:
+class CommonRegex:
     '''
     returns an array of all the english words in a given text
     @param  string  text           the text that contains the words

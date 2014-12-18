@@ -1,5 +1,5 @@
 import unittest
-from regex_util import RegexUtil
+from common_regex import CommonRegex
 class TestRegexUtil(unittest.TestCase):
 
     def setUp(self):
