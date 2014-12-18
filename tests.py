@@ -2,12 +2,14 @@
 import unittest
 from common_regex import CommonRegex
 class TestCommonRegex(unittest.TestCase):
+    dummy_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    strong_password = "Word$Numb3rs"
+    weak_password = "weak"
+    arabic_text = "احمد محمد عمر not arabic text $$##"
+    tweet = "Gary Moore - Parisienne Walkways - Live HD: http://youtu.be/vkUpfw4Hf3w  via @YouTube @AbuGnais"
 
     def setUp(self):
-        self.dummy_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        self.strong_password = "Word$Numb3rs"
-        self.weak_password = "weak"
-        self.arabic_text = "احمد محمد عمر not arabic text $$##"
+        pass
 
     def test_find_words(self):
         words   = CommonRegex.find_words(self.dummy_text)
@@ -21,8 +23,13 @@ class TestCommonRegex(unittest.TestCase):
     def test_find_links(self):
         pass
 
+    def test_twitter_names(self):
+        names = CommonRegex.twitter_names(self.tweet)
+        self.assertListEqual(names, ["@YouTube", "@AbuGnais"])
+
     def test_match_arabic(self):
-        print(CommonRegex.match_arabic(self.arabic_text))
+        pass
+        #print(CommonRegex.match_arabic(self.arabic_text))
 
     def test_password_vlidator(self):
         self.assertTrue(CommonRegex.password_validator(self.strong_password, min_length=10, char=True, digit=True, symbol=True, upper_case=True))

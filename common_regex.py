@@ -50,7 +50,7 @@ class CommonRegex:
     '''
     @staticmethod
     def twitter_names(text):
-        return re.findall('@\w{1,15}')
+        return re.findall('@\w{1,15}', text)
 
     '''
     matches all the valid twitter hashtags in a given text
