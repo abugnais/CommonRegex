@@ -2,11 +2,11 @@
 import unittest
 from common_regex import CommonRegex
 class TestCommonRegex(unittest.TestCase):
-    dummy_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    dummy_text      = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     strong_password = "Word$Numb3rs"
-    weak_password = "weak"
-    arabic_text = "احمد محمد عمر not arabic text $$##"
-    tweet = "Gary Moore - Parisienne Walkways - Live HD: http://youtu.be/vkUpfw4Hf3w  via @YouTube @AbuGnais"
+    weak_password   = "weak"
+    arabic_text     = "احمد محمد عمر not arabic text $$##"
+    tweet           = "Gary Moore - Parisienne Walkways - Live HD: http://youtu.be/vkUpfw4Hf3w  via @YouTube @AbuGnais"
 
     def setUp(self):
         pass
@@ -21,7 +21,8 @@ class TestCommonRegex(unittest.TestCase):
             self.assertTrue(len(word) >= 10)
 
     def test_find_links(self):
-        pass
+        links = CommonRegex.find_links(self.tweet)
+        self.assertListEqual(links, ["http://youtu.be/vkUpfw4Hf3w"])
 
     def test_twitter_names(self):
         names = CommonRegex.twitter_names(self.tweet)

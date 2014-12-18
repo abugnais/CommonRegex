@@ -22,7 +22,7 @@ class CommonRegex:
     '''
     @staticmethod
     def find_links(text):
-        return re.findall('\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))',text)
+        return re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',text)
 
     '''
     matches arabic text and returns and array of all arabic words if the flag returnMatches is set to true
