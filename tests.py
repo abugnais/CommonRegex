@@ -8,9 +8,6 @@ class TestCommonRegex(unittest.TestCase):
     arabic_text     = "احمد محمد عمر not arabic text $$##"
     tweet           = "Gary Moore - Parisienne Walkways - Live HD: http://youtu.be/vkUpfw4Hf3w  via @YouTube @AbuGnais"
 
-    def setUp(self):
-        pass
-
     def test_find_words(self):
         words   = CommonRegex.find_words(self.dummy_text)
         words_10= CommonRegex.find_words(self.dummy_text, 10)
