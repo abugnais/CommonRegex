@@ -27,12 +27,11 @@ class CommonRegex:
     '''
     matches arabic text and returns and array of all arabic words if the flag returnMatches is set to true
     @param  string  text the text to be examined
-    @param  bool    returnMatches optional,if set to true returns an array of the found words
-    @return bool|array
+    @return list
     '''
     @staticmethod
     def match_arabic(text):
-        return re.findall('([\u0621-\u0670]+)',text)
+        return re.findall('([\u0621-\u0670]+)', text)
 
     '''
     matches all the non printable control characters in a given text
@@ -94,19 +93,18 @@ class CommonRegex:
     '''
     Checks the given password based on the given validation conditions
     @param string text the password to be checkes
-    @param int minLength the passwords minimum length default = 6
+    @param int min_length the passwords minimum length default = 6
     @param bool char   password condition:need to have at least one character default = true
     @param bool digit  passsword condition:need to have at least one digit default = true
     @param bool symbol password condition:need to have at least one symbol default = false
-    @param bool upperCase password condition:need to have at least one upper case character default = false
+    @param bool upper_case password condition:need to have at least one upper case character default = false
     '''
     @staticmethod
     def password_validator(text, min_length = 5, char = True, digit = True, symbol = False, upper_case = False):
         regex = '(?=.{' + str(min_length) + ',})';
         regex += '(?=.+[a-zA-Z])' if char else ''
-        regex += '(?=\d)' if digit else ''
-        regex += '(?=\W+)' if symbol else ''
-        print(re.compile(regex).match(text))
-        return re.compile(regex).match(text)
+        regex += '(?=.*\d+.*)' if digit else ''
+        regex += '(?=.*\W+.*)' if symbol else ''
+        return re.compile(regex).match(text) is not None
 
 
