@@ -71,11 +71,11 @@ class CommonRegex:
         return re.findall('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?',text)
 
     '''
-    matches all the ints in a given text
-    @param string text
-    @param int minLength the minimum number of digits in the numbers to find
-    @param int maxLength the maximum number of digits in the numbers to find
-    @return array
+    Returns all of the integer values found in the given text.
+
+    :param str text: Text that may contain integers.
+    :return: List of all digit sequences found in ``text``.
+    :rtype: list
     '''
     @staticmethod
     def find_numbers(text):
