@@ -1,7 +1,7 @@
 import re
 
 '''
-python regualr expressions utility library
+python regular expressions utility library
 to use this library your strings need to be encoded in utf-8
 '''
 class CommonRegex:
