@@ -26,9 +26,9 @@ class TestCommonRegex(unittest.TestCase):
         self.assertListEqual(names, ["@YouTube", "@AbuGnais"])
 
     def test_match_arabic(self):
-        pass
-        #print(CommonRegex.match_arabic(self.arabic_text))
-
+        arabic_words = CommonRegex.match_arabic(self.arabic_text)
+        self.assertListEqual(arabic_words, ["احمد", "محمد", "عمر"])
+        
     def test_password_vlidator(self):
         self.assertTrue(CommonRegex.password_validator(self.strong_password, min_length=10, char=True, digit=True, symbol=True, upper_case=True))
         self.assertFalse(CommonRegex.password_validator(self.weak_password, min_length=10, char=True, digit=True, symbol=True, upper_case=True))
