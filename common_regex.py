@@ -59,7 +59,7 @@ class CommonRegex:
     '''
     @staticmethod
     def hashtags(text):
-        return re.findall('#\w+')
+        return re.findall('#\w+', text)
 
     '''
     matches all the valid emails in a given text
